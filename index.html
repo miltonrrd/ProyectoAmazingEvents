@@ -8,43 +8,57 @@
     <link rel="shortcut icon" href="./assets/images/favicon.png" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="./styles/Style.css">
     <title>Home</title>
 </head>
 
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <nav class="navbar navbar-expand-lg bg-dark">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">
-                    <img src="./assets/images/amazing_brand.png" alt="Bootstrap" width="30" height="24">
-                </a>
+                <div class="col-2">
+                    <a class="navbar-brand" href="#">
+                        <img class="img-fluid" src="./assets/images/amazing_brand.png" alt="amazing_brand">
+                    </a>
+                </div>
+                <div class="col-6"></div>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./pages/UpcomingEvents.html">Upcoming Events</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./pages/PastEvents.html">Past Events</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./pages/Contact.html">Contact</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./pages/Stats.html">Stats</a>
-                        </li>
+                <div class="col-4">
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link seleccionado" aria-current="page" href="#">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./pages/UpcomingEvents.html">Upcoming Events</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./pages/PastEvents.html">Past Events</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./pages/Contact.html">Contact</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./pages/Stats.html">Stats</a>
+                            </li>
 
-                    </ul>
+                        </ul>
+                    </div>
                 </div>
             </div>
-            </div>
         </nav>
+        <div class="container">
+            <div class="row d-flex justify-content-center">
+                <div class="col-2 d-flex justify-content-center align-items-center">
+                    <h1>
+                        HOME
+                    </h1>
+                </div>
+            </div>
+        </div>
         <div id="carouselExampleIndicators" class="carousel slide">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
@@ -57,70 +71,75 @@
                     aria-label="Slide 4"></button>
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4"
                     aria-label="Slide 5"></button>
-
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="./assets/images/optional_banner_1.jpg" class="d-block w-100" alt="banner_1">
+                    <div class="d-flex align-items-center justify-content-center carousel-image-container">
+                        <img src="./assets/images/optional_banner_1.jpg" class="d-block w-100 mx-auto" alt="banner_1">
+                    </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="./assets/images/optional_banner_2.jpg" class="d-block w-100" alt="banner_2">
+                    <div class="d-flex align-items-center justify-content-center carousel-image-container">
+                        <img src="./assets/images/optional_banner_2.jpg" class="d-block w-100 mx-auto" alt="banner_2">
+                    </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="./assets/images/optional_banner_3.jpg" class="d-block w-100" alt="banner_3">
+                    <div class="d-flex align-items-center justify-content-center carousel-image-container">
+                        <img src="./assets/images/optional_banner_3.jpg" class="d-block w-100 mx-auto" alt="banner_3">
+                    </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="./assets/images/optional_banner_4.jpg" class="d-block w-100" alt="banner_4">
+                    <div class="d-flex align-items-center justify-content-center carousel-image-container">
+                        <img src="./assets/images/optional_banner_4.jpg" class="d-block w-100 mx-auto" alt="banner_4">
+                    </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="./assets/images/optional_banner_5.jpg" class="d-block w-100" alt="banner_5">
+                    <div class="d-flex align-items-center justify-content-center carousel-image-container">
+                        <img src="./assets/images/optional_banner_5.jpg" class="d-block w-100 mx-auto" alt="banner_5">
+                    </div>
+
                 </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-                data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-                data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
         </div>
-        <h1>
-            HOME
-        </h1>
     </header>
-    <main>
+    <main class="bg-dark-subtle">
         <div class="container">
             <div class="row">
                 <div class="col-8">
-                    <form action="">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col">
-                                    <label for="">
-                                        <input type="checkbox" name="Categoria1" id="Categoria1">Categoria1</label>
-                                </div>
-                                <div class="col">
-                                    <label for="">
-                                        <input type="checkbox" name="Categoria2" id="Categoria2">Categoria2</label>
-                                </div>
-                                <div class="col">
-                                    <label for="">
-                                        <input type="checkbox" name="Categoria3" id="Categoria3">Categoria3</label>
-                                </div>
-                                <div class="col">
-                                    <label for="">
-                                        <input type="checkbox" name="Categoria4" id="Categoria4">Categoria4</label>
-                                </div>
-                                <div class="col">
-                                    <label for="">
-                                        <input type="checkbox" name="Categoria5" id="Categoria5">Categoria5</label>
-                                </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <label for="Categoria1">
+                                    <input type="checkbox" name="Categoria1" id="Categoria1">Categoria1</label>
+                            </div>
+                            <div class="col">
+                                <label for="Categoria2">
+                                    <input type="checkbox" name="Categoria2" id="Categoria2">Categoria2</label>
+                            </div>
+                            <div class="col">
+                                <label for="Categoria3">
+                                    <input type="checkbox" name="Categoria3" id="Categoria3">Categoria3</label>
+                            </div>
+                            <div class="col">
+                                <label for="Categoria4">
+                                    <input type="checkbox" name="Categoria4" id="Categoria4">Categoria4</label>
+                            </div>
+                            <div class="col">
+                                <label for="Categoria5">
+                                    <input type="checkbox" name="Categoria5" id="Categoria5">Categoria5</label>
                             </div>
                         </div>
-                    </form>
+                    </div>
                 </div>
                 <div class="col-4">
                     <form class="d-flex" role="search">
@@ -129,54 +148,69 @@
                     </form>
                 </div>
             </div>
-        </div>
-
-        <div class="container">
             <div class="row">
-                <div class="col-3">
+                <div class="d-flex flex-wrap gap-3 justify-content-center">
                     <div class="card" style="width: 18rem;">
-                        <img src="./assets/images/food_fair.jpg" class="card-img-top" alt="food_fair">
+                        <img src="./assets/images/food_fair.jpg" class="card-img-top w-100 mx-auto" alt="food_fair">
                         <div class="card-body">
-                          <h5 class="card-title">Festival of the collectivities</h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                          <a href="#" class="btn btn-primary">Go somewhere</a>
+                            <h5 class="card-title">Festival of the collectivities</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the
+                                bulk
+                                of the card's content.</p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
                         </div>
-                      </div>
-                </div>
-                <div class="col-3">
+                    </div>
                     <div class="card" style="width: 18rem;">
-                        <img src="./assets/images/outing_to_the_museum.jpg" class="card-img-top" alt="outing_to_the_museum">
+                        <img src="./assets/images/outing_to_the_museum.jpg" class="card-img-top w-100 mx-auto"
+                            alt="outing_to_the_museum">
                         <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                          <a href="#" class="btn btn-primary">Go somewhere</a>
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the
+                                bulk
+                                of the card's content.</p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
                         </div>
-                      </div>
-                </div>
-                <div class="col-3">
+                    </div>
                     <div class="card" style="width: 18rem;">
-                        <img src="./assets/images/costume_party.jpg" class="card-img-top" alt="costume_party">
+                        <img src="./assets/images/costume_party.jpg" class="card-img-top w-100 mx-auto" alt="costume_party">
                         <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                          <a href="#" class="btn btn-primary">Go somewhere</a>
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the
+                                bulk
+                                of the card's content.</p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
                         </div>
-                      </div>
-                </div>
-                <div class="col-3">
+                    </div>
                     <div class="card" style="width: 18rem;">
-                        <img src="./assets/images/music_concert.jpg" class="card-img-top" alt="music_concert">
+                        <img src="./assets/images/music_concert.jpg" class="card-img-top w-100 mx-auto" alt="music_concert">
                         <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                          <a href="#" class="btn btn-primary">Go somewhere</a>
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the
+                                bulk
+                                of the card's content.</p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
                         </div>
-                      </div>
+                    </div>
                 </div>
+
             </div>
         </div>
     </main>
-
+    <footer class="bg-black">
+        <div class="container">
+            <div class="row">
+                <div class="col-1">
+                    <img src="./assets/images/facebook.png" alt="facebook" class="img-fluid">
+                </div>
+                <div class="col-1">
+                    <img src="./assets/images/instagram.png" alt="instagram" class="img-fluid">
+                </div>
+                <div class="col-1">
+                    <img src="./assets/images/whatsapp.png" alt="whatsapp" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </footer>
 
 
 
