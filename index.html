@@ -14,52 +14,46 @@
 
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg bg-dark">
-            <div class="container-fluid">
-                <div class="col-2">
-                    <a class="navbar-brand" href="#">
-                        <img class="img-fluid" src="./assets/images/amazing_brand.png" alt="amazing_brand">
-                    </a>
-                </div>
-                <div class="col-6"></div>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="col-4">
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a class="nav-link seleccionado" aria-current="page" href="#">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="./pages/UpcomingEvents.html">Upcoming Events</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="./pages/PastEvents.html">Past Events</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="./pages/Contact.html">Contact</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="./pages/Stats.html">Stats</a>
-                            </li>
-
-                        </ul>
-                    </div>
-                </div>
+        <nav class="container p-2 navbar navbar-expand-lg bg-dark">
+            <div class="col-12">
+                <a class="navbar-brand" href="#">
+                    <img class="img-fluid" src="./assets/images/amazing_brand.png" alt="amazing_brand">
+                </a>
+            </div>
+            <button class="navbar-toggler col-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list"
+                    viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
+                </svg>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link seleccionado" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./pages/UpcomingEvents.html">Upcoming Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./pages/PastEvents.html">Past Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./pages/Contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./pages/Stats.html">Stats</a>
+                    </li>
+                </ul>
             </div>
         </nav>
-        <div class="container">
-            <div class="row d-flex justify-content-center">
-                <div class="col-2 d-flex justify-content-center align-items-center">
-                    <h1>
-                        HOME
-                    </h1>
-                </div>
-            </div>
-        </div>
         <div id="carouselExampleIndicators" class="carousel slide">
+            <div class="row justify-content-center">
+                <h1 class="col-4 ">
+                    HOME
+                </h1>
+            </div>
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
                     aria-current="true" aria-label="Slide 1"></button>
@@ -112,103 +106,106 @@
             </div>
         </div>
     </header>
-    <main class="bg-dark-subtle">
-        <div class="container">
+    <main class="bg-dark-subtle container">
+        <div class="row p-2 justify-content-center">
             <div class="row">
-                <div class="col-8">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col">
-                                <label for="Categoria1">
-                                    <input type="checkbox" name="Categoria1" id="Categoria1">Categoria1</label>
-                            </div>
-                            <div class="col">
-                                <label for="Categoria2">
-                                    <input type="checkbox" name="Categoria2" id="Categoria2">Categoria2</label>
-                            </div>
-                            <div class="col">
-                                <label for="Categoria3">
-                                    <input type="checkbox" name="Categoria3" id="Categoria3">Categoria3</label>
-                            </div>
-                            <div class="col">
-                                <label for="Categoria4">
-                                    <input type="checkbox" name="Categoria4" id="Categoria4">Categoria4</label>
-                            </div>
-                            <div class="col">
-                                <label for="Categoria5">
-                                    <input type="checkbox" name="Categoria5" id="Categoria5">Categoria5</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-4">
-                    <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                    </form>
-                </div>
+                <label for="Categoria1" class="col-6">
+                    <input type="checkbox" name="Categoria1" id="Categoria1">Categoria1</label>
+                <label for="Categoria2" class="col-6">
+                    <input type="checkbox" name="Categoria2" id="Categoria2">Categoria2</label>
+                <label for="Categoria3" class="col-6">
+                    <input type="checkbox" name="Categoria3" id="Categoria3">Categoria3</label>
+                <label for="Categoria4" class="col-6">
+                    <input type="checkbox" name="Categoria4" id="Categoria4">Categoria4</label>
+                <label for="Categoria5" class="col-6">
+                    <input type="checkbox" name="Categoria5" id="Categoria5">Categoria5</label>
             </div>
-            <div class="row">
-                <div class="d-flex flex-wrap gap-3 justify-content-center">
-                    <div class="card" style="width: 18rem;">
-                        <img src="./assets/images/food_fair.jpg" class="card-img-top w-100 mx-auto" alt="food_fair">
-                        <div class="card-body">
-                            <h5 class="card-title">Festival of the collectivities</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the
-                                bulk
-                                of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                    <div class="card" style="width: 18rem;">
-                        <img src="./assets/images/outing_to_the_museum.jpg" class="card-img-top w-100 mx-auto"
-                            alt="outing_to_the_museum">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the
-                                bulk
-                                of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                    <div class="card" style="width: 18rem;">
-                        <img src="./assets/images/costume_party.jpg" class="card-img-top w-100 mx-auto" alt="costume_party">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the
-                                bulk
-                                of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                    <div class="card" style="width: 18rem;">
-                        <img src="./assets/images/music_concert.jpg" class="card-img-top w-100 mx-auto" alt="music_concert">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the
-                                bulk
-                                of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
+            <div class="row justify-content-center align-content-center p-2">
+                <div class="col-8 p-0">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                 </div>
-
+                <button class="btn btn-outline-success col-2" type="submit">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                      </svg>
+                </button>
             </div>
         </div>
-    </main>
-    <footer class="bg-black">
-        <div class="container">
-            <div class="row">
-                <div class="col-1">
-                    <img src="./assets/images/facebook.png" alt="facebook" class="img-fluid">
+        <div class="row">
+            <div class="d-flex flex-wrap gap-3 justify-content-center">
+                <div class="card" style="width: 18rem;">
+                    <img src="./assets/images/food_fair.jpg" class="card-img-top w-100 mx-auto" alt="food_fair">
+                    <div class="card-body">
+                        <h5 class="card-title">Festival of the collectivities</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the
+                            bulk
+                            of the card's content.</p>
+                            <div class="row">
+                                <p>PRICE</p>
+                                <div class="col-2">
+                                    <a href="#" class="btn btn-primary">Details</a>
+                                </div>
+                              </div>
+                    </div>
                 </div>
-                <div class="col-1">
-                    <img src="./assets/images/instagram.png" alt="instagram" class="img-fluid">
+                <div class="card" style="width: 18rem;">
+                    <img src="./assets/images/outing_to_the_museum.jpg" class="card-img-top w-100 mx-auto"
+                        alt="outing_to_the_museum">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the
+                            bulk
+                            of the card's content.</p>
+                            <div class="row">
+                                <p>PRICE</p>
+                                <div class="col-2">
+                                    <a href="#" class="btn btn-primary">Details</a>
+                                </div>
+                              </div>
+                    </div>
                 </div>
-                <div class="col-1">
-                    <img src="./assets/images/whatsapp.png" alt="whatsapp" class="img-fluid">
+                <div class="card" style="width: 18rem;">
+                    <img src="./assets/images/costume_party.jpg" class="card-img-top w-100 mx-auto" alt="costume_party">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the
+                            bulk
+                            of the card's content.</p>
+                            <div class="row">
+                                <p>PRICE</p>
+                                <div class="col-2">
+                                    <a href="#" class="btn btn-primary">Details</a>
+                                </div>
+                              </div>
+                    </div>
+                </div>
+                <div class="card" style="width: 18rem;">
+                    <img src="./assets/images/music_concert.jpg" class="card-img-top w-100 mx-auto" alt="music_concert">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the
+                            bulk
+                            of the card's content.</p>
+                            <div class="row">
+                                <p>PRICE</p>
+                                <div class="col-2">
+                                    <a href="#" class="btn btn-primary">Details</a>
+                                </div>
+                              </div>
+                    </div>
                 </div>
             </div>
+
+        </div>
+    </main>
+    <footer class="bg-black container">
+        <div class="row">
+            <div class="col-6 d-flex gap-3">
+                <img src="./assets/images/facebook.png" alt="facebook">
+                <img src="./assets/images/instagram.png" alt="instagram">
+                <img src="./assets/images/whatsapp.png" alt="whatsapp">
+            </div>
+
         </div>
     </footer>
 
