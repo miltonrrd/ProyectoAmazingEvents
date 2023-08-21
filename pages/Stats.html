@@ -13,9 +13,9 @@
 </head>
 <body>
     <header>
-        <nav class="container p-2 navbar navbar-expand-lg bg-dark">
-            <div class="col-12">
-                <a class="navbar-brand" href="#">
+        <nav class="p-2 navbar navbar-expand-lg bg-dark">
+            <div class="col-12 col-sm-6 col-lg-2">
+                <a class="navbar-brand" href="../index.html">
                     <img class="img-fluid" src="../assets/images/amazing_brand.png" alt="amazing_brand">
                 </a>
             </div>
@@ -27,19 +27,19 @@
                         d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
                 </svg>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="collapse navbar-collapse d-lg-flex justify-content-lg-end" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link " aria-current="page" href="../index.html">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./UpcomingEvents.html">Upcoming Events</a>
+                        <a class="nav-link " href="./UpcomingEvents.html">Upcoming Events</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./PastEvents.html">Past Events</a>
+                        <a class="nav-link " href="./PastEvents.html">Past Events</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./Contact.html">Contact</a>
+                        <a class="nav-link " href="./Contact.html">Contact</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link seleccionado" href="#">Stats</a>
@@ -48,11 +48,9 @@
             </div>
         </nav>
         <div id="carouselExampleIndicators" class="carousel slide">
-            <div class="row justify-content-center mx-0">
-                <h1 class="col-4">
-                    STATS
-                </h1>
-            </div>
+            <h1>
+                STATS
+            </h1>
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
                     aria-current="true" aria-label="Slide 1"></button>
@@ -67,29 +65,19 @@
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <div class="d-flex align-items-center justify-content-center carousel-image-container">
-                        <img src="../assets/images/optional_banner_1.jpg" class="d-block w-100 mx-auto" alt="banner_1">
-                    </div>
+                    <img src="../assets/images/optional_banner_1.jpg" class="d-block w-100 img-carousel" alt="banner_1">
                 </div>
                 <div class="carousel-item">
-                    <div class="d-flex align-items-center justify-content-center carousel-image-container">
-                        <img src="../assets/images/optional_banner_2.jpg" class="d-block w-100 mx-auto" alt="banner_2">
-                    </div>
+                    <img src="../assets/images/optional_banner_2.jpg" class="d-block w-100 img-carousel" alt="banner_2">
                 </div>
                 <div class="carousel-item">
-                    <div class="d-flex align-items-center justify-content-center carousel-image-container">
-                        <img src="../assets/images/optional_banner_3.jpg" class="d-block w-100 mx-auto" alt="banner_3">
-                    </div>
+                    <img src="../assets/images/optional_banner_3.jpg" class="d-block w-100 img-carousel" alt="banner_3">
                 </div>
                 <div class="carousel-item">
-                    <div class="d-flex align-items-center justify-content-center carousel-image-container">
-                        <img src="../assets/images/optional_banner_4.jpg" class="d-block w-100 mx-auto" alt="banner_4">
-                    </div>
+                    <img src="../assets/images/optional_banner_4.jpg" class="d-block w-100 img-carousel" alt="banner_4">
                 </div>
                 <div class="carousel-item">
-                    <div class="d-flex align-items-center justify-content-center carousel-image-container">
-                        <img src="../assets/images/optional_banner_5.jpg" class="d-block w-100 mx-auto" alt="banner_5">
-                    </div>
+                    <img src="../assets/images/optional_banner_5.jpg" class="d-block w-100 img-carousel" alt="banner_5">
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
                     data-bs-slide="prev">
@@ -102,6 +90,7 @@
                     <span class="visually-hidden">Next</span>
                 </button>
             </div>
+        </div>
     </header>
     <main class="bg-dark-subtle container p-1">
         <div class="row mx-0 mb-1">
@@ -182,21 +171,20 @@
         </div>
     </main>
 
-    <footer class="bg-black container">
-        <div class="row gap-2 align-items-center mx-0">
-            <figure class="col-2 m-0">
+    <footer class="bg-black row m-0 p-3 justify-content-between align-items-center">
+        <div class="col-6 d-flex gap-2 justify-content-md-between">
+            <figure class=" m-0">
                 <a href="#"><img src="../assets/images/facebook.png" alt="facebook" class="w-100"></a>
             </figure>
-            <figure class="col-2 m-0">
+            <figure class=" m-0">
                 <a href="#"><img src="../assets/images/instagram.png" alt="instagram" class="w-100"></a>
             </figure>
-            <figure class="col-2 m-0">
+            <figure class=" m-0">
                 <a href="#"><img src="../assets/images/whatsapp.png" alt="whatsapp" class="w-100"></a>
             </figure>
-            <div class="col-5 ">
-                <h6>COHORT-03</h6>
-            </div>
         </div>
+        <p>COHORT-03</p>
+           
     </footer>
 
 
