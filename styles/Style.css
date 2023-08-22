@@ -1,11 +1,12 @@
 /* *{
     outline: 1px solid red;
 } */
+
 header{
     min-height: 10vh;
 }
 main{
-    min-height:68vh;
+    min-height:71vh;
 }
 
 
@@ -25,16 +26,27 @@ main{
 h1{
     color:white;
     text-shadow: 2px 2px 2px black;
-    font-size: 4rem;
+    font-size: 3.5rem;
     z-index: 1;
     font-weight: bolder;
     position: absolute;
-    left:calc(50vw - 100px);
     padding: 0 1%;
     /* background-color: rgb(14, 13, 13); */
     /* border: 4px solid #d90368; */
     text-align: center;
     display: block;
+}
+.h1-home{
+    left:calc(50vw - 88px);
+}
+.h1-upcoming, .h1-past{
+    left:calc(50vw - 162.5px);
+}
+.h1-contact{
+    left:calc(50vw - 160px);
+}
+.h1-stats{
+    left:calc(50vw - 83.17px);
 }
 
 .img-carousel{
@@ -55,6 +67,10 @@ h1{
     height: 40%;
     object-fit: cover;
 }
+
+.img-details{
+    object-fit: cover;
+}
 .card-body .btn{
     background-color: black;
     color: white;
@@ -71,6 +87,13 @@ td,th{
     color:white;
     background-color: black;
 }
+.input-message{
+    height: 20vh;
+}
+
+ul li{
+    list-style-type: none;
+}
 footer{
     min-height: 5vh;
     padding: 1rem;
@@ -79,4 +102,64 @@ footer p{
     font-weight: bold;
     display:contents;
     justify-self: flex-end;
+}
+
+@media only screen and (min-width:321px) and (max-width:767px){
+    .h1-home{
+        left:calc(50vw - 88.6px);
+    }
+    .h1-upcoming{
+        left:calc(50vw - 187.5px);
+    }
+    .h1-past{
+        left:calc(50vw - 182.15px);
+    }
+    .h1-contact{
+        left:calc(50vw - 176px);
+    }
+    .h1-stats{
+        left:calc(50vw - 84.235px);
+    }
+}
+@media only screen and (min-width:768px) and (max-width:1023px){
+    .h1-home{
+        left:calc(50vw - 92px);
+    }
+    .h1-upcoming{
+        left:calc(50vw - 271.75px);
+    }
+    .h1-past{
+        left:calc(50vw - 185.57px);
+    }
+    .h1-contact{
+        left:calc(50vw - 179.42px);
+    }
+    .h1-stats{
+        left:calc(50vw - 87.65px);
+    }
+    td,th{
+        height: 1.5rem;
+        font-size:medium;
+    }
+}
+@media only screen and (min-width:1024px){
+    .h1-home{
+        left:calc(50vw - 94.615px);
+    }
+    .h1-upcoming{
+        left:calc(50vw - 274.315px);
+    }
+    .h1-past{
+        left:calc(50vw - 188.135px);
+    }
+    .h1-contact{
+        left:calc(50vw - 181.985px);
+    }
+    .h1-stats{
+        left:calc(50vw - 90.22px);
+    }
+    td,th{
+        height: 2rem;
+        font-size:medium;
+    }
 }

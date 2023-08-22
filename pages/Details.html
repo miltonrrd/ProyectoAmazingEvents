@@ -8,15 +8,15 @@
     <link rel="shortcut icon" href="./assets/images/favicon.png" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-        <link rel="stylesheet" href="../styles/Style.css">
+    <link rel="stylesheet" href="../styles/Style.css">
     <title>Details</title>
 </head>
 
 <body>
     <header>
-        <nav class="container p-2 navbar navbar-expand-lg bg-dark">
-            <div class="col-12">
-                <a class="navbar-brand" href="#">
+        <nav class="p-2 navbar navbar-expand-lg bg-dark">
+            <div class="col-12 col-sm-6 col-lg-2">
+                <a class="navbar-brand" href="../index.html">
                     <img class="img-fluid" src="../assets/images/amazing_brand.png" alt="amazing_brand">
                 </a>
             </div>
@@ -28,48 +28,47 @@
                         d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
                 </svg>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="collapse navbar-collapse d-lg-flex justify-content-lg-end" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link " aria-current="page" href="../index.html">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./UpcomingEvents.html">Upcoming Events</a>
+                        <a class="nav-link " href="./UpcomingEvents.html">Upcoming Events</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./PastEvents.html">Past Events</a>
+                        <a class="nav-link " href="./PastEvents.html">Past Events</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link seleccionado" href="./Contact.html">Contact</a>
+                        <a class="nav-link " href="./Contact.html">Contact</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./Stats.html">Stats</a>
+                        <a class="nav-link " href="./Stats.html">Stats</a>
                     </li>
                 </ul>
             </div>
         </nav>
     </header>
-    <main class="bg-dark-subtle container p-1">
-        <div class="container">
-            <div class="row">
-                <div class="col-10">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-7">
-                                <img src="../assets/images/music_concert.jpg" alt="music_concert" class="img-fluid">
-                            </div>
-                            <div class="col-5">
-                                <h2>Metallica in concert</h2>
-                                <ul>
-                                    <li>2024-01-22</li>
-                                    <li>The only concert of the most emblematic band in the world</li>
-                                    <li>Category : Music Concert</li>
-                                    <li>Place: Room A</li>
-                                    <li>Capacity: 138000</li>
-                                    <li>Estimate:138000</li>
-                                    <li>Price: 150</li>
-                                </ul>
-                            </div>
+    <main class="bg-dark-subtle container p-3 d-flex justify-content-center align-items-center">
+        <div class="row justify-content-center">
+            <div class="card mb-3 col-10 px-0" style="max-width:600;">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="../assets/images/music_concert.jpg"
+                            class="img-fluid rounded-start img-details w-100 h-100" alt="music_concert">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Metallica in concert</h5>
+                            <ul>
+                                <li>The only concert of the most emblematic band in the world</li>
+                                <li>Date: 2024-01-22</li>                          
+                                <li>Category: Music Concert</li>
+                                <li>Place: Room A</li>
+                                <li>Capacity: 138000</li>
+                                <li>Estimate: 138000</li>
+                                <li> Price: 150</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -78,21 +77,20 @@
     </main>
 
 
-    <footer class="bg-black container">
-        <div class="row gap-2 align-items-center">
-            <figure class="col-2 m-0">
+    <footer class="bg-black row m-0 p-3 justify-content-between align-items-center">
+        <div class="col-6 d-flex gap-2 justify-content-md-between">
+            <figure class=" m-0">
                 <a href="#"><img src="../assets/images/facebook.png" alt="facebook" class="w-100"></a>
             </figure>
-            <figure class="col-2 m-0">
+            <figure class=" m-0">
                 <a href="#"><img src="../assets/images/instagram.png" alt="instagram" class="w-100"></a>
             </figure>
-            <figure class="col-2 m-0">
+            <figure class=" m-0">
                 <a href="#"><img src="../assets/images/whatsapp.png" alt="whatsapp" class="w-100"></a>
             </figure>
-            <div class="col-5 ">
-                <h6>COHORT-03</h6>
-            </div>     
         </div>
+        <p>COHORT-03</p>
+
     </footer>
 
 

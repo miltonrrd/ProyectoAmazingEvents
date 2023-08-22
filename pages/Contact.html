@@ -49,7 +49,7 @@
             </div>
         </nav>
         <div id="carouselExampleIndicators" class="carousel slide">
-            <h1>
+            <h1 class="h1-contact">
                 CONTACT US
             </h1>
             <div class="carousel-indicators">
@@ -94,19 +94,25 @@
         </div>
     </header>
     <main class="bg-dark-subtle container p-1">
-        <div class="row mx-0">
-            <form action="">
-                <label for="Name">Name:</label>
-                <input class="col-12" type="text" name="Name" id="Name">
-                <label for="Email">Email:</label>
-                <input class="col-12" type="email" name="Email" id="Email">
-                <label for="Message">Message:</label>
-                <input class="col-12 h-45" type="text" name="Message" id="Message">
+        <form action="">
+            <div class="d-flex flex-column gap-3 p-md-4 p-lg-5">
+                <div class="col">
+                    <label for="Name">Name:</label>
+                    <input class="col-12" type="text" name="Name" id="Name">
+                </div>
+                <div class="col">
+                    <label for="Email">Email:</label>
+                    <input class="col-12 " type="email" name="Email" id="Email">
+                </div>
+                <div class="col">
+                    <label for="Message">Message:</label>
+                    <input class="col-12 input-message" type="text" name="Message" id="Message">
+                </div>
+                    
+                <input class="col-3 col-md-2 col-lg-1 mt-2" type="submit" value="Submit">
 
-                <input class="col-3 mt-2" type="submit" value="Submit">
-            </form>
-        </div>
-
+            </div>
+        </form>
     </main>
 
     <footer class="bg-black row m-0 p-3 justify-content-between align-items-center">
@@ -122,7 +128,7 @@
             </figure>
         </div>
         <p>COHORT-03</p>
-           
+
     </footer>
 
 
