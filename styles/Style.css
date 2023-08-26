@@ -2,22 +2,25 @@
     outline: 1px solid red;
 } */
 
+nav{
+    min-height: 8vh;
+}
 header{
-    min-height: 10vh;
+    min-width: 52vh;
 }
 main{
-    min-height:71vh;
+    min-height:40vh;
 }
 
 
-.navbar-toggler{
-    color: #d90368;
+.navbar-toggler,.navbar-toggler-icon, .seleccionado{
+    color: #d90368!important;
 }
 .nav-link{
     color: white;
 }
-.seleccionado {
-    color: #d90368;
+.nav-link:hover{
+    color: black;
 }
 .bg-dark{
     background-color: rgb(14, 13, 13) !important;
@@ -50,7 +53,7 @@ h1{
 }
 
 .img-carousel{
-    height: 340px;
+    height: 250px;
     object-fit: cover;
 }
 .btn{
@@ -64,7 +67,7 @@ h1{
 }
 
 .card img{
-    height: 40%;
+    height: 170px;
     object-fit: cover;
 }
 
@@ -88,14 +91,15 @@ td,th{
     background-color: black;
 }
 .input-message{
-    height: 20vh;
+    height: 10vh;
 }
 
 ul li{
     list-style-type: none;
 }
+
 footer{
-    min-height: 5vh;
+    min-height: 8vh;
     padding: 1rem;
 }
 footer p{
@@ -141,6 +145,9 @@ footer p{
         height: 1.5rem;
         font-size:medium;
     }
+    .img-footer{
+        width: 50% !important;
+    }
 }
 @media only screen and (min-width:1024px){
     .h1-home{
@@ -161,5 +168,8 @@ footer p{
     td,th{
         height: 2rem;
         font-size:medium;
+    }
+    .img-footer{
+        width: 50% !important;
     }
 }
