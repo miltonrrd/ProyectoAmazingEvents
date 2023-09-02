@@ -12,61 +12,75 @@ switch (pagina) {
         cargarElementos(events, ubicacion, "card");
         ubicacion = document.getElementById("checks");
         cargarElementos(categoriasSinRepetidos, ubicacion, "checkbox");
+        escuchar();
         break;
     case "Upcoming Events":
         ubicacion = document.getElementById("cardsProximos");
         cargarElementos(upcomingEvents, ubicacion, "card");
         ubicacion = document.getElementById("checksProximos");
         cargarElementos(categoriasSinRepetidos, ubicacion, "checkbox");
+        escuchar();
         break;
     case "Past Events":
         ubicacion = document.getElementById("cardsPasadas");
         cargarElementos(pastEvents, ubicacion, "card");
         ubicacion = document.getElementById("checksPasados");
         cargarElementos(categoriasSinRepetidos, ubicacion, "checkbox");
+        escuchar();
+        break;
+    case "Details":
+        let querySearch = location.search;
+        let params = new URLSearchParams(querySearch);
+        let id = params.get("id");
+        generarDetailsCard(id);
         break;
 }
 
-const checks = document.querySelector("form div.checks");
-checks.addEventListener("input", () => {
-    console.log([checks]);
-    let lugarDeLlamado = checks.ownerDocument.title;
-    filtroController(lugarDeLlamado); 
-});
+//Logica Home-Upcoming-Past
 
-const form = document.forms[0];
-form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    let lugarDeLlamado = form.ownerDocument.title;
-    filtroController(lugarDeLlamado);
-})
 
-function filtroController(ubicacion){ //Dependiendo desde que pagina se realizo el filtro, se envia como argumento el array correspondiente
-    if (ubicacion === "Home"){
+function escuchar() {
+    const checks = document.querySelector("form div.checks");
+    checks.addEventListener("input", () => {
+        let lugarDeLlamado = checks.ownerDocument.title;
+        filtroController(lugarDeLlamado);
+    });
+
+    const form = document.forms[0];
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        let lugarDeLlamado = form.ownerDocument.title;
+        filtroController(lugarDeLlamado);
+    })
+}
+
+function filtroController(ubicacion) { //Dependiendo desde que pagina se realizo el filtro, se envia como argumento el array correspondiente
+    if (ubicacion === "Home") {
         filtroCruzado(events);
-    }else if(ubicacion === "Upcoming Events"){
+    } else if (ubicacion === "Upcoming Events") {
         filtroCruzado(upcomingEvents);
-    }else{
+    } else {
         filtroCruzado(pastEvents)
     }
 }
 
-function filtroCruzado(eventos){
+function filtroCruzado(eventos) {
     let eventosFiltradosPorCategoria = filtrarPorChecks(eventos);
     let eventosAMostrar = filtrarPorBuscador(eventosFiltradosPorCategoria);
     ubicacion = document.querySelector("main div.cards");
-    if (eventosAMostrar.length == 0){
+    if (eventosAMostrar.length == 0) {
+        cargarElementos(eventosAMostrar, ubicacion, "card");
         cargarImagenSinResultados(ubicacion);
-    }else{
-        cargarElementos(eventosAMostrar, ubicacion, "card"); 
+    } else {
+        cargarElementos(eventosAMostrar, ubicacion, "card");
     }
-    
+
 }
 
 function filtrarPorChecks(eventos) {
     let categoriasChecks = Array.from(checks.childNodes).filter(elemento => elemento.control.checked).map(inputCategoria => inputCategoria.innerText.toLowerCase());
     let eventosFiltrados = filtrarPorCategorias(eventos, categoriasChecks);
-    if (eventosFiltrados.length === 0){
+    if (eventosFiltrados.length === 0) {
         return eventos
     }
     return eventosFiltrados;
@@ -75,15 +89,15 @@ function filtrarPorChecks(eventos) {
 function filtrarPorBuscador(eventos) {
     const inputBuscador = document.querySelector("form div div input");
     let texto = inputBuscador.value.toLowerCase();
-    if (texto === ""){
+    if (texto === "") {
         return eventos;
     }
     let eventosFiltrados = [];
     for (evento of eventos) {
-        let contenido= evento.name.toLowerCase().split(" ").some(palabra => palabra.includes(texto));
-            if (contenido) {
-                eventosFiltrados.push(evento);
-            }
+        let contenido = evento.name.toLowerCase().split(" ").some(palabra => palabra.includes(texto));
+        if (contenido) {
+            eventosFiltrados.push(evento);
+        }
     }
     return eventosFiltrados;
 }
@@ -120,11 +134,11 @@ function generarCard(evento) {
                             </li>
                         </ul>
                         <div class="row justify-content-evenly align-items-center">
-                            <div class="col-4">
-                                <h6>${evento.price}</h6>
+                            <div class="col-5">
+                                <h6>US$ ${evento.price}</h6>
                             </div>
                             <div class="col-3">
-                                <a href="./pages/Details.html" class="btn btn-primary">Details</a>
+                                <a href= ./${document.title === "Home" ? "pages/" : ""}Details.html?id=${evento._id} class="btn btn-primary">Details</a>
                             </div>
                         </div>
                     </div> 
@@ -138,9 +152,12 @@ function generarCheckboxCategoria(categoria) {
     return checkbox;
 }
 
-cargarImagenSinResultados(ubicacion){
-    
-
+function cargarImagenSinResultados(ubicacion) {
+    let contenedorImagen = document.createElement("figure");
+    contenedorImagen.classList.add("d-flex");
+    contenedorImagen.classList.add("justify-content-center");
+    contenedorImagen.innerHTML = `<img src="${document.title === "Home" ? "./assets/images/nothing-found.png" : "../assets/images/nothing-found.png"}" class="card-img-top w-50 d-flex" alt="imagen no encontrado">`;
+    ubicacion.appendChild(contenedorImagen);
 }
 
 function filtrarRepetidos(array) {
@@ -167,6 +184,33 @@ function filtrarPorCategorias(eventos, categorias) {
 }
 
 
-
+//Logica Details
+function generarDetailsCard(id){
+    let evento = events.find(evento => evento._id === id);
+    let ubicacion = document.querySelector("main div");
+    cardHtml=`<div class="card mb-3 col-10 px-0" style="max-width:600px;">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="${evento.image}"
+                            class="img-fluid rounded-start img-details w-100 h-100" alt="music_concert">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">${evento.name}</h5>
+                            <ul>
+                                <li>${evento.description}</li>
+                                <li><span class="fw-bold">Date:</span> ${evento.date}</li>                          
+                                <li><span class="fw-bold">Category:</span> ${evento.category}</li>
+                                <li><span class="fw-bold">Place:</span> ${evento.place}</li>
+                                <li><span class="fw-bold">Capacity:</span> ${evento.capacity}</li>
+                                <li><span class="fw-bold">Assistance:</span> ${evento.assistance}</li>
+                                <li><h6> Price: US$ ${evento.price}</h6></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+              </div>`
+    ubicacion.innerHTML = cardHtml;  
+}
 
 // let categorias = events.map(evento => evento.category).filter((categoria,index,self )=> {return self.indexOf(categoria) === index;});
