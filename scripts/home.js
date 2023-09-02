@@ -54,8 +54,13 @@ function filtroController(ubicacion){ //Dependiendo desde que pagina se realizo 
 function filtroCruzado(eventos){
     let eventosFiltradosPorCategoria = filtrarPorChecks(eventos);
     let eventosAMostrar = filtrarPorBuscador(eventosFiltradosPorCategoria);
-    ubicacion = document.querySelector("main div.cards")
-    cargarElementos(eventosAMostrar, ubicacion, "card"); 
+    ubicacion = document.querySelector("main div.cards");
+    if (eventosAMostrar.length == 0){
+        cargarImagenSinResultados(ubicacion);
+    }else{
+        cargarElementos(eventosAMostrar, ubicacion, "card"); 
+    }
+    
 }
 
 function filtrarPorChecks(eventos) {
@@ -131,6 +136,11 @@ function generarCheckboxCategoria(categoria) {
     let checkbox = `<label for="${categoria}" class="col-6 col-sm-4 col-lg-2 d-flex justify-content-start">
     <input type="checkbox" name="${categoria}" id="${categoria}" value="${categoria}">${categoria}</label>`
     return checkbox;
+}
+
+cargarImagenSinResultados(ubicacion){
+    
+
 }
 
 function filtrarRepetidos(array) {
