@@ -11,6 +11,9 @@ header{
 main{
     min-height:40vh;
 }
+.main-details {
+    min-height: 78.6vh;
+}
 
 
 .navbar-toggler,.navbar-toggler-icon, .seleccionado{
@@ -91,7 +94,7 @@ td,th{
     background-color: black;
 }
 .input-message{
-    height: 10vh;
+    height: 11.1vh;
 }
 
 ul li{
@@ -142,8 +145,8 @@ footer p{
         left:calc(50vw - 87.65px);
     }
     td,th{
-        height: 1.5rem;
-        font-size:medium;
+        height: 1.42rem;
+        font-size:small;
     }
     .img-footer{
         width: 50% !important;
@@ -166,8 +169,8 @@ footer p{
         left:calc(50vw - 90.22px);
     }
     td,th{
-        height: 2rem;
-        font-size:medium;
+        height: 1.42rem;
+        font-size:small;
     }
     .img-footer{
         width: 50% !important;
