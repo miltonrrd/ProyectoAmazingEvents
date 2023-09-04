@@ -154,8 +154,11 @@ function generarCheckboxCategoria(categoria) {
 function cargarImagenSinResultados(ubicacion) {
     let contenedorImagen = document.createElement("figure");
     contenedorImagen.classList.add("d-flex");
+    contenedorImagen.classList.add("flex-column");
+    contenedorImagen.classList.add("align-items-center")
     contenedorImagen.classList.add("justify-content-center");
-    contenedorImagen.innerHTML = `<img src="${document.title === "Home" ? "./assets/images/nothing-found.png" : "../assets/images/nothing-found.png"}" class="card-img-top w-50 d-flex" alt="imagen no encontrado">`;
+    contenedorImagen.innerHTML = `<h2 class="text-body-secondary">No se encontraron resultados para la búsqueda realizada.</h2>
+                                  <img src="${document.title === "Home" ? "./assets/images/nothing-found.png" : "../assets/images/nothing-found.png"}" class="card-img-top w-50 d-flex" alt="imagen no encontrado">`;
     ubicacion.appendChild(contenedorImagen);
 }
 
