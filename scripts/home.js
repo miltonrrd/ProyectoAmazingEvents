@@ -1,10 +1,10 @@
-let events = data.events;
-let fecha = data.currentDate;
-let pastEvents = events.filter(evento => evento.date < fecha);
-let upcomingEvents = events.filter(evento => evento.date > fecha);
-let categorias = events.map(evento => evento.category);
-let categoriasSinRepetidos = filtrarRepetidos(categorias);
-let pagina = document.title;
+const events = data.events;
+const fecha = data.currentDate;
+const pastEvents = events.filter(evento => evento.date < fecha);
+const upcomingEvents = events.filter(evento => evento.date > fecha);
+const categorias = events.map(evento => evento.category);
+const categoriasSinRepetidos = filtrarRepetidos(categorias);
+const pagina = document.title;
 let ubicacion;
 switch (pagina) {
     case "Home":
@@ -42,15 +42,13 @@ switch (pagina) {
 function escuchar() {
     const checks = document.querySelector("form div.checks");
     checks.addEventListener("input", () => {
-        let lugarDeLlamado = checks.ownerDocument.title;
-        filtroController(lugarDeLlamado);
+        filtroController(pagina);
     });
 
     const form = document.forms[0];
     form.addEventListener("submit", (e) => {
         e.preventDefault();
-        let lugarDeLlamado = form.ownerDocument.title;
-        filtroController(lugarDeLlamado);
+        filtroController(pagina);
     })
 }
 
@@ -78,6 +76,7 @@ function filtroCruzado(eventos) {
 }
 
 function filtrarPorChecks(eventos) {
+    let checks = document.querySelector("form div.checks");
     let categoriasChecks = Array.from(checks.childNodes).filter(elemento => elemento.control.checked).map(inputCategoria => inputCategoria.innerText.toLowerCase());
     let eventosFiltrados = filtrarPorCategorias(eventos, categoriasChecks);
     if (eventosFiltrados.length === 0) {
