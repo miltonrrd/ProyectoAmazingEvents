@@ -1,42 +1,65 @@
-const events = data.events;
-const fecha = data.currentDate;
-const pastEvents = events.filter(evento => evento.date < fecha);
-const upcomingEvents = events.filter(evento => evento.date > fecha);
-const categorias = events.map(evento => evento.category);
-const categoriasSinRepetidos = filtrarRepetidos(categorias);
+let events = [];
+let fecha;
+let pastEvents;
+let upcomingEvents; 
+let categorias;
+let categoriasSinRepetidos;
 const pagina = document.title;
+let url = "https://mindhub-xj03.onrender.com/api/amazing";
 let ubicacion;
-switch (pagina) {
-    case "Home":
-        ubicacion = document.getElementById("cards");
-        cargarElementos(events, ubicacion, "card");
-        ubicacion = document.getElementById("checks");
-        cargarElementos(categoriasSinRepetidos, ubicacion, "checkbox");
-        escuchar();
-        break;
-    case "Upcoming Events":
-        ubicacion = document.getElementById("cardsProximos");
-        cargarElementos(upcomingEvents, ubicacion, "card");
-        ubicacion = document.getElementById("checksProximos");
-        cargarElementos(categoriasSinRepetidos, ubicacion, "checkbox");
-        escuchar();
-        break;
-    case "Past Events":
-        ubicacion = document.getElementById("cardsPasadas");
-        cargarElementos(pastEvents, ubicacion, "card");
-        ubicacion = document.getElementById("checksPasados");
-        cargarElementos(categoriasSinRepetidos, ubicacion, "checkbox");
-        escuchar();
-        break;
-    case "Details":
-        let querySearch = location.search;
-        let params = new URLSearchParams(querySearch);
-        let id = params.get("id");
-        generarDetailsCard(id);
-        break;
+
+
+
+fetch(url)
+.then(response => response.json())
+.then(data =>{
+    events = data.events;
+    fecha = data.currentDate;
+    pastEvents = events.filter(evento => evento.date < fecha);
+    upcomingEvents = events.filter(evento => evento.date > fecha);
+    categorias = events.map(evento => evento.category);
+    categoriasSinRepetidos = filtrarRepetidos(categorias);
+    actualizarPagina();
+})
+.catch(error => {console.log(error)
+})
+
+
+
+function actualizarPagina(){
+    switch (pagina) {
+        case "Home":
+            ubicacion = document.getElementById("cards");
+            cargarElementos(events, ubicacion, "card");
+            ubicacion = document.getElementById("checks");
+            cargarElementos(categoriasSinRepetidos, ubicacion, "checkbox");
+            escuchar();
+            break;
+        case "Upcoming Events":
+            ubicacion = document.getElementById("cardsProximos");
+            cargarElementos(upcomingEvents, ubicacion, "card");
+            ubicacion = document.getElementById("checksProximos");
+            cargarElementos(categoriasSinRepetidos, ubicacion, "checkbox");
+            escuchar();
+            break;
+        case "Past Events":
+            ubicacion = document.getElementById("cardsPasadas");
+            cargarElementos(pastEvents, ubicacion, "card");
+            ubicacion = document.getElementById("checksPasados");
+            cargarElementos(categoriasSinRepetidos, ubicacion, "checkbox");
+            escuchar();
+            break;
+        case "Details":
+            let querySearch = location.search;
+            let params = new URLSearchParams(querySearch);
+            let id = params.get("id");
+            generarDetailsCard(id);
+            break;
+    }
 }
 
 //Logica Home-Upcoming-Past
+
 
 
 function escuchar() {
@@ -157,7 +180,7 @@ function cargarImagenSinResultados(ubicacion) {
     contenedorImagen.classList.add("flex-column");
     contenedorImagen.classList.add("align-items-center")
     contenedorImagen.classList.add("justify-content-center");
-    contenedorImagen.innerHTML = `<h2 class="text-body-secondary">No se encontraron resultados para la búsqueda realizada.</h2>
+    contenedorImagen.innerHTML = `<h2 class="text-body-secondary text-center">No se encontraron resultados para la búsqueda realizada.</h2>
                                   <img src="${document.title === "Home" ? "./assets/images/nothing-found.png" : "../assets/images/nothing-found.png"}" class="card-img-top w-50 d-flex" alt="imagen no encontrado">`;
     ubicacion.appendChild(contenedorImagen);
 }
@@ -188,7 +211,7 @@ function filtrarPorCategorias(eventos, categorias) {
 
 //Logica Details
 function generarDetailsCard(id){
-    let evento = events.find(evento => evento._id === id);
+    let evento = events.find(evento => evento._id == id);
     let ubicacion = document.querySelector("main div");
     cardHtml=`<div class="card mb-3 col-10 px-0" style="max-width:600px;">
                 <div class="row g-0">
