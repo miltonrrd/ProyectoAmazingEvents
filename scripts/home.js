@@ -1,32 +1,28 @@
 let events = [];
 let fecha;
 let pastEvents;
-let upcomingEvents; 
+let upcomingEvents;
 let categorias;
 let categoriasSinRepetidos;
 const pagina = document.title;
 let url = "https://mindhub-xj03.onrender.com/api/amazing";
 let ubicacion;
 
+fetch(url).then(response => response.json())
+    .then(data => {
+        events = data.events;
+        fecha = data.currentDate;
+        pastEvents = events.filter(evento => evento.date < fecha);
+        upcomingEvents = events.filter(evento => evento.date > fecha);
+        categorias = events.map(evento => evento.category);
+        categoriasSinRepetidos = filtrarRepetidos(categorias);
+        actualizarPagina();
+    })
+    .catch(error => {
+        console.log(error)
+    })
 
-
-fetch(url)
-.then(response => response.json())
-.then(data =>{
-    events = data.events;
-    fecha = data.currentDate;
-    pastEvents = events.filter(evento => evento.date < fecha);
-    upcomingEvents = events.filter(evento => evento.date > fecha);
-    categorias = events.map(evento => evento.category);
-    categoriasSinRepetidos = filtrarRepetidos(categorias);
-    actualizarPagina();
-})
-.catch(error => {console.log(error)
-})
-
-
-
-function actualizarPagina(){
+function actualizarPagina() {
     switch (pagina) {
         case "Home":
             ubicacion = document.getElementById("cards");
@@ -55,19 +51,20 @@ function actualizarPagina(){
             let id = params.get("id");
             generarDetailsCard(id);
             break;
+        case "Stats":
+            generarTablasStats()
+
+            break;
     }
 }
 
 //Logica Home-Upcoming-Past
 
-
-
 function escuchar() {
     const checks = document.querySelector("form div.checks");
     checks.addEventListener("input", () => {
         filtroController(pagina);
-    });
-
+    })
     const form = document.forms[0];
     form.addEventListener("submit", (e) => {
         e.preventDefault();
@@ -210,10 +207,10 @@ function filtrarPorCategorias(eventos, categorias) {
 
 
 //Logica Details
-function generarDetailsCard(id){
+function generarDetailsCard(id) {
     let evento = events.find(evento => evento._id == id);
     let ubicacion = document.querySelector("main div");
-    cardHtml=`<div class="card mb-3 col-10 px-0" style="max-width:600px;">
+    cardHtml = `<div class="card mb-3 col-10 px-0" style="max-width:600px;">
                 <div class="row g-0">
                     <div class="col-md-4">
                         <img src="${evento.image}"
@@ -228,14 +225,104 @@ function generarDetailsCard(id){
                                 <li><span class="fw-bold">Category:</span> ${evento.category}</li>
                                 <li><span class="fw-bold">Place:</span> ${evento.place}</li>
                                 <li><span class="fw-bold">Capacity:</span> ${evento.capacity}</li>
-                                <li><span class="fw-bold">Assistance:</span> ${evento.assistance}</li>
+                                <li><span class="fw-bold">${evento.date >= fecha ? `Estimate:</span> ${evento.estimate}` : `Assistance:</span> ${evento.assistance}`}</li>
                                 <li><h6> Price: US$ ${evento.price}</h6></li>
                             </ul>
                         </div>
                     </div>
                 </div>
               </div>`
-    ubicacion.innerHTML = cardHtml;  
+    ubicacion.innerHTML = cardHtml;
 }
 
-// let categorias = events.map(evento => evento.category).filter((categoria,index,self )=> {return self.indexOf(categoria) === index;});
+// Logica stats
+
+function calcularGananciaYPorcentajeAsistencia(array) { //le coloco un nueva propiedad a cada evento, que almacene el porcentaje de asistencia
+    array.forEach(evento => {
+        let porcentajeAsistencia = evento.date >= fecha ? (evento.estimate * 100) / evento.capacity : (evento.assistance * 100) / evento.capacity;
+        let ganancia = evento.date >= fecha ? evento.estimate * evento.price : evento.assistance * evento.price;
+        evento.percentageAttendance = porcentajeAsistencia;
+        evento.revenue = ganancia;
+    });
+}
+
+function calcularEstadisticasPorCategoria(array) {
+    let estadisiticasPorCategoria = [];
+    categoriasSinRepetidos.forEach(categoria => {
+        let sumatoriaPorcentajeAsistencia = 0;
+        let cantidad = 0;
+        let sumatoriaGanancia = 0;
+        array.filter(evento => evento.category === categoria).forEach(evento => {
+            sumatoriaPorcentajeAsistencia += evento.percentageAttendance;
+            cantidad++;
+            sumatoriaGanancia += evento.revenue;
+        })
+        let cat = {
+            name: categoria,
+            revenue: sumatoriaGanancia,
+            percentageAttendance: sumatoriaPorcentajeAsistencia / cantidad
+        }
+        estadisiticasPorCategoria.push(cat);
+    })
+    return estadisiticasPorCategoria;
+}
+
+function cargarEstadisticas(array, ubicacion) {
+    let filasHtml = "";
+    array.forEach(categoria => { filasHtml += generarFila(categoria) });
+    ubicacion.innerHTML = filasHtml;
+}
+
+function generarFila(categoria) {
+    if (categoria.revenue === 0) {
+        return "";
+    }
+    let fila = `<tr>
+                    <td>${categoria.name}</td>
+                    <td>$${categoria.revenue.toLocaleString()}</td>
+                    <td>${categoria.percentageAttendance.toFixed(2)}%</td>
+               </tr>`;
+    return fila
+}
+
+function buscarHighestAttendance(array){
+    let eventoBuscado = array[0];
+    array.forEach(evento =>{evento.percentageAttendance>eventoBuscado.percentageAttendance?eventoBuscado=evento:eventoBuscado;});
+    return eventoBuscado;
+}
+function buscarLowestAttendance(array){
+    let eventoBuscado = array[0];
+    array.forEach(evento =>{evento.percentageAttendance<eventoBuscado.percentageAttendance?eventoBuscado=evento:eventoBuscado;});
+    return eventoBuscado;
+}
+function buscarLargerCapacity(array){
+    let eventoBuscado = array[0];
+    array.forEach(evento =>{evento.capacity>eventoBuscado.capacity?eventoBuscado=evento:eventoBuscado;});
+    return eventoBuscado;
+}
+function generarBotonAEventoDestacado(evento){
+   return `<a class="text-decoration-none"href="./Details.html?id=${evento._id}"><span class="bg-black text-white border border-danger rounded ">${evento.name}</span></a>`;
+}
+
+function cargarEventosDestacados(mayorAsistencia,menorAsistencia,mayorCapacidad){
+    let ubicacion = document.getElementById("HighestAttendance");
+    ubicacion.innerHTML = generarBotonAEventoDestacado(mayorAsistencia);
+    ubicacion = document.getElementById("LowerAttendance");
+    ubicacion.innerHTML = generarBotonAEventoDestacado(menorAsistencia);
+    ubicacion = document.getElementById("LargerCapacity");
+    ubicacion.innerHTML = generarBotonAEventoDestacado(mayorCapacidad);
+}
+
+function generarTablasStats() {
+    calcularGananciaYPorcentajeAsistencia(events);
+    let pastStatsCategories = calcularEstadisticasPorCategoria(pastEvents);
+    let upcomingStatsCategories = calcularEstadisticasPorCategoria(upcomingEvents);
+    let ubicacion = document.getElementById("tablaUpcoming");
+    let highestAttendance = buscarHighestAttendance(pastEvents);
+    let lowestAttendance = buscarLowestAttendance(pastEvents);
+    let largerCapacity = buscarLargerCapacity(events);
+    cargarEventosDestacados(highestAttendance,lowestAttendance,largerCapacity);
+    cargarEstadisticas(upcomingStatsCategories, ubicacion);
+    ubicacion = document.getElementById("tablaPast");
+    cargarEstadisticas(pastStatsCategories, ubicacion);
+}
