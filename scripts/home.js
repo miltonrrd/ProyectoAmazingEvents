@@ -10,12 +10,7 @@ let ubicacion;
 
 fetch(url).then(response => response.json())
     .then(data => {
-        events = data.events;
-        fecha = data.currentDate;
-        pastEvents = events.filter(evento => evento.date < fecha);
-        upcomingEvents = events.filter(evento => evento.date > fecha);
-        categorias = events.map(evento => evento.category);
-        categoriasSinRepetidos = filtrarRepetidos(categorias);
+        cargarDatos();
         actualizarPagina();
     })
     .catch(error => {
@@ -52,10 +47,18 @@ function actualizarPagina() {
             generarDetailsCard(id);
             break;
         case "Stats":
-            generarTablasStats()
-
+            generarTablasStats();
             break;
     }
+}
+
+function cargarDatos(){
+    events = data.events;
+    fecha = data.currentDate;
+    pastEvents = events.filter(evento => evento.date < fecha);
+    upcomingEvents = events.filter(evento => evento.date > fecha);
+    categorias = events.map(evento => evento.category);
+    categoriasSinRepetidos = filtrarRepetidos(categorias);
 }
 
 //Logica Home-Upcoming-Past
