@@ -10,7 +10,7 @@ let ubicacion;
 
 fetch(url).then(response => response.json())
     .then(data => {
-        cargarDatos();
+        cargarDatos(data);
         actualizarPagina();
     })
     .catch(error => {
@@ -52,7 +52,7 @@ function actualizarPagina() {
     }
 }
 
-function cargarDatos(){
+function cargarDatos(data){
     events = data.events;
     fecha = data.currentDate;
     pastEvents = events.filter(evento => evento.date < fecha);
@@ -213,7 +213,7 @@ function filtrarPorCategorias(eventos, categorias) {
 function generarDetailsCard(id) {
     let evento = events.find(evento => evento._id == id);
     let ubicacion = document.querySelector("main div");
-    cardHtml = `<div class="card mb-3 col-10 px-0" style="max-width:600px;">
+    cardHtml = `<div class="card mb-3 col-10 px-0" style="max-width:70vw">
                 <div class="row g-0">
                     <div class="col-md-4">
                         <img src="${evento.image}"

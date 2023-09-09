@@ -1,20 +1,24 @@
 /* *{
     outline: 1px solid red;
 } */
-
+body{
+    min-height: 100vh;
+}
 nav{
     min-height: 8vh;
 }
 header{
-    min-width: 52vh;
+    max-height: 52vh;
+}
+.headerSinBanner{
+    min-height: 8vh;
 }
 main{
     min-height:40vh;
 }
-.main-details {
-    min-height: 78.6vh;
+.mainSinBanner{
+    min-height: 81.4vh;
 }
-
 
 .navbar-toggler,.navbar-toggler-icon, .seleccionado{
     color: #d90368!important;
@@ -102,7 +106,7 @@ ul li{
 }
 
 footer{
-    min-height: 8vh;
+    max-height: 8vh;
     padding: 1rem;
 }
 footer p{
