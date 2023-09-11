@@ -308,7 +308,7 @@ function buscarLargerCapacity(array) {
     return eventoBuscado;
 }
 function generarBotonAEventoDestacado(evento) {
-    return `<a class="text-decoration-none"href="./Details.html?id=${evento._id}"><span class="bg-black text-white border border-danger rounded ">${evento.name}</span></a>`;
+    return `<a class="text-decoration-none"href="./Details.html?id=${evento._id}"><span class="bg-black text-white border border-danger rounded px-1">${evento.name}</span></a>`;
 }
 
 function cargarEventosDestacados(mayorAsistencia, menorAsistencia, mayorCapacidad) {
