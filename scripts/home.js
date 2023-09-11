@@ -224,7 +224,7 @@ function generarDetailsCard(id) {
                             class="img-fluid rounded-start img-details w-100 h-100" alt="music_concert">
                     </div>
                     <div class="col-md-8">
-                        <div class="card-body">
+                        <div class="card-body ">
                             <h5 class="card-title text-center titulo-card ">${evento.name}</h5>
                             <ul>
                                 <li>${evento.description}</li>
