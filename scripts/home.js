@@ -49,10 +49,14 @@ function actualizarPagina() {
         case "Stats":
             generarTablasStats();
             break;
+        case "Contact":
+            mostrarAlerta();
+            break;
+
     }
 }
 
-function cargarDatos(data){
+function cargarDatos(data) {
     events = data.events;
     fecha = data.currentDate;
     pastEvents = events.filter(evento => evento.date < fecha);
@@ -102,7 +106,7 @@ function filtrarPorChecks(eventos) {
     let checks = document.querySelector("form div.checks");
     let categoriasChecks = Array.from(checks.childNodes).filter(elemento => elemento.control.checked).map(inputCategoria => inputCategoria.innerText.toLowerCase());
     let eventosFiltrados = filtrarPorCategorias(eventos, categoriasChecks);
-    if (eventosFiltrados.length === 0) {
+    if ((eventosFiltrados.length === 0) && (categoriasChecks.length===0)) {
         return eventos
     }
     return eventosFiltrados;
@@ -180,7 +184,7 @@ function cargarImagenSinResultados(ubicacion) {
     contenedorImagen.classList.add("flex-column");
     contenedorImagen.classList.add("align-items-center")
     contenedorImagen.classList.add("justify-content-center");
-    contenedorImagen.innerHTML = `<h2 class="text-body-secondary text-center">No se encontraron resultados para la búsqueda realizada.</h2>
+    contenedorImagen.innerHTML = `<h2 class="text-body-secondary text-center">Search not found.</h2>
                                   <img src="${document.title === "Home" ? "./assets/images/nothing-found.png" : "../assets/images/nothing-found.png"}" class="card-img-top w-50 d-flex" alt="imagen no encontrado">`;
     ubicacion.appendChild(contenedorImagen);
 }
@@ -213,7 +217,7 @@ function filtrarPorCategorias(eventos, categorias) {
 function generarDetailsCard(id) {
     let evento = events.find(evento => evento._id == id);
     let ubicacion = document.querySelector("main div");
-    cardHtml = `<div class="card mb-3 col-10 px-0" style="max-width:70vw">
+    cardHtml = `<div class="card col-10 px-0 style-card" style="max-width:100vw">
                 <div class="row g-0">
                     <div class="col-md-4">
                         <img src="${evento.image}"
@@ -221,7 +225,7 @@ function generarDetailsCard(id) {
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
-                            <h5 class="card-title text-center">${evento.name}</h5>
+                            <h5 class="card-title text-center titulo-card ">${evento.name}</h5>
                             <ul>
                                 <li>${evento.description}</li>
                                 <li><span class="fw-bold">Date:</span> ${evento.date}</li>                          
@@ -288,26 +292,26 @@ function generarFila(categoria) {
     return fila
 }
 
-function buscarHighestAttendance(array){
+function buscarHighestAttendance(array) {
     let eventoBuscado = array[0];
-    array.forEach(evento =>{evento.percentageAttendance>eventoBuscado.percentageAttendance?eventoBuscado=evento:eventoBuscado;});
+    array.forEach(evento => { evento.percentageAttendance > eventoBuscado.percentageAttendance ? eventoBuscado = evento : eventoBuscado; });
     return eventoBuscado;
 }
-function buscarLowestAttendance(array){
+function buscarLowestAttendance(array) {
     let eventoBuscado = array[0];
-    array.forEach(evento =>{evento.percentageAttendance<eventoBuscado.percentageAttendance?eventoBuscado=evento:eventoBuscado;});
+    array.forEach(evento => { evento.percentageAttendance < eventoBuscado.percentageAttendance ? eventoBuscado = evento : eventoBuscado; });
     return eventoBuscado;
 }
-function buscarLargerCapacity(array){
+function buscarLargerCapacity(array) {
     let eventoBuscado = array[0];
-    array.forEach(evento =>{evento.capacity>eventoBuscado.capacity?eventoBuscado=evento:eventoBuscado;});
+    array.forEach(evento => { evento.capacity > eventoBuscado.capacity ? eventoBuscado = evento : eventoBuscado; });
     return eventoBuscado;
 }
-function generarBotonAEventoDestacado(evento){
-   return `<a class="text-decoration-none"href="./Details.html?id=${evento._id}"><span class="bg-black text-white border border-danger rounded ">${evento.name}</span></a>`;
+function generarBotonAEventoDestacado(evento) {
+    return `<a class="text-decoration-none"href="./Details.html?id=${evento._id}"><span class="bg-black text-white border border-danger rounded ">${evento.name}</span></a>`;
 }
 
-function cargarEventosDestacados(mayorAsistencia,menorAsistencia,mayorCapacidad){
+function cargarEventosDestacados(mayorAsistencia, menorAsistencia, mayorCapacidad) {
     let ubicacion = document.getElementById("HighestAttendance");
     ubicacion.innerHTML = generarBotonAEventoDestacado(mayorAsistencia);
     ubicacion = document.getElementById("LowerAttendance");
@@ -324,8 +328,21 @@ function generarTablasStats() {
     let highestAttendance = buscarHighestAttendance(pastEvents);
     let lowestAttendance = buscarLowestAttendance(pastEvents);
     let largerCapacity = buscarLargerCapacity(events);
-    cargarEventosDestacados(highestAttendance,lowestAttendance,largerCapacity);
+    cargarEventosDestacados(highestAttendance, lowestAttendance, largerCapacity);
     cargarEstadisticas(upcomingStatsCategories, ubicacion);
     ubicacion = document.getElementById("tablaPast");
     cargarEstadisticas(pastStatsCategories, ubicacion);
+}
+
+//Logica Contact
+
+function mostrarAlerta() {
+    const submit = document.forms[0];
+    submit.addEventListener("submit", (e) => {
+        e.preventDefault();
+        swal("Sent succesfully!", "We will contact you shortly!", "success");
+        let inputs = Array.from(document.querySelectorAll("form div div input"));
+        inputs.forEach(elemento => {elemento.value = "" });
+    })
+
 }
