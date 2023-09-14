@@ -13,69 +13,94 @@
 </head>
 
 <body class="bg-dark-subtle">
-    <header class="headerSinBanner">
-        <nav class="navbar navbar-expand-lg bg-dark">
-            <div class="container-fluid">
-                <a class="navbar-brand col-12 col-sm-6 col-lg-2 p-0" href="../index.html">
-                    <img class="img-fluid" src="../assets/images/amazing_brand.png" alt="amazing_brand">
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
-                    aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                        class="bi bi-list" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd"
-                            d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
-                    </svg>
-                </button>
-                <div class="collapse navbar-collapse justify-content-end" id="navbarText">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 m-lg-0 d-flex justify-content-end">
-                        <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="../index.html">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./UpcomingEvents.html">Upcoming Events</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./PastEvents.html">Past Events</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./Contact.html">Contact</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./Stats.html">Stats</a>
-                        </li>
-                    </ul>
-
+    <div id="appDetails">
+        <header class="headerSinBanner">
+            <nav class="navbar navbar-expand-lg bg-dark">
+                <div class="container-fluid">
+                    <a class="navbar-brand col-12 col-sm-6 col-lg-2 p-0" href="../index.html">
+                        <img class="img-fluid" src="../assets/images/amazing_brand.png" alt="amazing_brand">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+                        aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                            class="bi bi-list" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
+                        </svg>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-end" id="navbarText">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0 m-lg-0 d-flex justify-content-end">
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="../index.html">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./UpcomingEvents.html">Upcoming Events</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./PastEvents.html">Past Events</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./Contact.html">Contact</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./Stats.html">Stats</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
+            </nav>
+        </header>
+        <main class="bg-dark-subtle container p-3 d-flex justify-content-center align-items-center mainSinBanner">
+            <div class="row justify-content-center">
+                <div class="card col-10 px-0 style-card" style="max-width:100vw">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img :src="eventoDetails.image"
+                                class="img-fluid rounded-start img-details w-100 h-100" alt="music_concert">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body ">
+                                <h5 class="card-title text-center titulo-card ">{{eventoDetails.name}}</h5>
+                                <ul>
+                                    <li>{{eventoDetails.description}}</li>
+                                    <li><span class="fw-bold">Date:</span> {{eventoDetails.date}}</li>                          
+                                    <li><span class="fw-bold">Category:</span> {{eventoDetails.category}}</li>
+                                    <li><span class="fw-bold">Place:</span> {{eventoDetails.place}}</li>
+                                    <li><span class="fw-bold">Capacity:</span> {{eventoDetails.capacity}}</li>
+                                    <li v-if="eventoDetails.date < fecha"><span class="fw-bold">Estimate:</span> {{eventoDetails.estimate}}</li>
+                                    <li v-if="eventoDetails.date > fecha"><span class="fw-bold">Assistance:</span> {{eventoDetails.assistance}}</li>
+                                    <li><h6> Price: US$ {{eventoDetails.price}}</h6></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
             </div>
-        </nav>
-    </header>
-    <main class="bg-dark-subtle container p-3 d-flex justify-content-center align-items-center mainSinBanner">
-        <div class="row justify-content-center">
-            
-        </div>
-    </main>
-
-
-    <footer class="bg-black row m-0 p-2 justify-content-between align-content-center">
-        <div class="col-6 d-flex gap-2 justify-content-md-between justify-content-center">
-            <figure class=" m-0">
-                <a href="#"><img src="../assets/images/facebook.png" alt="facebook" class="w-75 img-footer"></a>
-            </figure>
-            <figure class=" m-0">
-                <a href="#"><img src="../assets/images/instagram.png" alt="instagram" class="w-75 img-footer"></a>
-            </figure>
-            <figure class=" m-0">
-                <a href="#"><img src="../assets/images/whatsapp.png" alt="whatsapp" class="w-75 img-footer"></a>
-            </figure>
-        </div>
-        <p>COHORT-03</p>
-    </footer>
+        </main>
+    
+        <footer class="bg-black row m-0 p-2 justify-content-between align-content-center">
+            <div class="col-6 d-flex gap-2 justify-content-md-between justify-content-center">
+                <figure class=" m-0">
+                    <a href="#"><img src="../assets/images/facebook.png" alt="facebook" class="w-75 img-footer"></a>
+                </figure>
+                <figure class=" m-0">
+                    <a href="#"><img src="../assets/images/instagram.png" alt="instagram" class="w-75 img-footer"></a>
+                </figure>
+                <figure class=" m-0">
+                    <a href="#"><img src="../assets/images/whatsapp.png" alt="whatsapp" class="w-75 img-footer"></a>
+                </figure>
+            </div>
+            <p>COHORT-03</p>
+        </footer>
+    </div>
+   
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
       crossorigin="anonymous"></script>
-    <script src="../scripts/home.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="../scripts/script.js"></script>
+    
 </body>
 
 </html>
